@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.my-green {
+  color: green;
+}
+
+.bold {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+.cursor-pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<h2>{{pageTitle}}</h2>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText" (input)="filterBikes()">
+    </div>
+  </div>
+  <div class="col-md-3">
+    <button type="button" class="btn btn-info" (click)="changeName()">Change Name</button>
+  </div>
+  <div class="col-md-3">
+    <button type="button" class="btn btn-warning float-right" (click)="toggleImages()">{{showImages ? 'Hide' : 'Show'}}
+      Images</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Filter By : {{searchText | nullOrEmpty :'N/A'}}
+  </div>
+</div>
+<hr>
+<div class="row" *ngIf="products && products.length; else noBikes" (mousemove)="mouseEnterEvent()">
+  <div class="col-md-4 mt-3" *ngFor="let product of products; let i = index;">
+    <app-product [productToBeRendered]="product" [canShowImage]="showImages"
+      (onProductDeleted)="onSuccessfullyDeleted($event)"></app-product>
+  </div>
+</div>
+
+
+
+<ng-template #noBikes>
+  <div class="alert alert-warning" role="alert">
+    <strong>OOps No Bikes are available</strong>
+  </div>
+</ng-template>
